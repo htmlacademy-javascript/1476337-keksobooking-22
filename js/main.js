@@ -1,9 +1,27 @@
-const randomInteger = function (min, max) {
-  let rand = min - 0 + Math.random() * (max - min + 1);
-  return Math.round(rand);
+const getRandomInteger = function (min, max) {
+  const randomNumber = min + Math.random() * (max - min + 1);
+  if (min < 0) {
+    return new Error('Диапазон может быть больше или равен нулю')
+  } else if (min >= max) {
+    return new Error('Начальное значение диапазона не должно быть больше или равным конечному');
+  } else {
+    return Math.floor(randomNumber);
+  }
 }
 
-alert(randomInteger(1, 50));
-alert(Math.random());
+alert(getRandomInteger(1, 50));
 
 
+const getRandomFloatingPoint = function (min, max, decimalDigits) {
+  if (min < 0) {
+    return new Error('Диапазон может быть больше или равен нулю');
+  } else if (decimalDigits < 0) {
+    return new Error('Кол-во чисел после запятой может быть больше или равен нулю');
+  } else if (min >= max) {
+    return new Error('Начальное значение диапазона не должно быть больше или равным конечному');
+  } else {
+    const randomFloating = min + Math.random() * (max - min);
+    return (randomFloating);
+  }
+}
+alert(Math.floor(getRandomFloatingPoint(0, 9.9) * 100) / 100);
