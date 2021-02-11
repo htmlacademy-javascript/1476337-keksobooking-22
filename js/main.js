@@ -20,8 +20,7 @@ const getRandomFloatingPoint = function (min, max, decimalDigits) {
   } else if (min >= max) {
     return new Error('Начальное значение диапазона не должно быть больше или равным конечному');
   } else {
-    const randomFloating = min + Math.random() * (max - min);
-    return (randomFloating);
+    return Number((Math.random() * (max - min) + min).toFixed(decimalDigits));
   }
 }
-alert(Math.floor(getRandomFloatingPoint(0, 9.9) * 100) / 100);
+alert(getRandomFloatingPoint(0, 9.9, 3));
