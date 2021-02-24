@@ -36,7 +36,7 @@ const guests = [2, 1]
 function CreateOffer() {
   const array = []
   for (let i = 0; i <= 10; i++) {
-    const offers = {
+    const offer = {
       author: {
         avatar: 'img/avatars/user01.png',
       },
@@ -63,7 +63,7 @@ function CreateOffer() {
 
     }
 
-    array[i] = offer
+    array[i] = offers
 
 
   }
@@ -72,4 +72,4 @@ function CreateOffer() {
 
 }
 
-const offer = CreateOffer();
+const offers = CreateOffer();
