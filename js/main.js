@@ -32,23 +32,27 @@ const titles = ['двухместный номер', 'трёхместный н�
 const rooms = [25, 30, 45]
 const guests = [2, 1]
 
+function getRandomElement(items) {
+// "|" for a kinda "int div"
+  return items[items.length * Math.random() | 0];
+}
 
-function CreateOffer() {
-  const array = []
-  for (let i = 0; i <= 10; i++) {
+const CreateOffer = function () {
+  const offers = []
+  for (let i = 0; i < 9; i++) {
     const offer = {
       author: {
-        avatar: 'img/avatars/user01.png',
+        avatar: 'img/avatars/user0' + i + '.png',
       },
       offer: {
-        title: getRandomInteger(titles),
+        title: titles[getRandomInteger(0, 2)],
         address: '100, 200',
         price: getRandomInteger(10, 100),
-        type: getRandomInteger(types),
-        rooms: getRandomInteger(rooms),
-        guests: getRandomInteger(guests),
-        checkin: getRandomInteger(checks),
-        checkout: getRandomInteger(checks),
+        type: types[getRandomElement(3)],
+        rooms: rooms[getRandomElement(25, 30, 45)],
+        guests: guests[getRandomElement(2, 1)],
+        checkin: checks[getRandomElement('12:00', '13:00', '14:00')],
+        checkout: checks[getRandomElement('12:00', '13:00', '14:00')],
         features: ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'],
         description: 'small',
         photos: [
@@ -57,19 +61,20 @@ function CreateOffer() {
           'http://o0.github.io/assets/images/tokyo/hotel3.jpg'],
       },
       location: {
-        x: getRandomFloatingPoint(35.65000, 35.70000),
-        y: getRandomFloatingPoint(139.70000, 139.80000),
+        x: getRandomFloatingPoint(35.65000, 35.70000, 5),
+        y: getRandomFloatingPoint(139.70000, 139.80000, 5),
       },
 
     }
 
-    array[i] = offers
+    offers[i] = offer
 
 
   }
 
-  return array;
+  return offers;
 
 }
 
 const offers = CreateOffer();
+console.log(offers);
