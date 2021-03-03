@@ -47,7 +47,7 @@ const getArrRandomLength = (arr) => {
   return arr.slice(0, getRandomInteger(0, arr.length - 1));
 };
 
-const createOffer = () => {
+const createOffers = () => {
   const offers = []
   for (let i = 0; i < 10; i++) {
     const x = getRandomFloatingPoint(35.65000, 35.70000, 5)
@@ -58,7 +58,7 @@ const createOffer = () => {
       },
       offer: {
         title: getRandomElement(titles),
-        address: getRandomFloatingPoint(x, y),
+        address: x + ', ' + y,
         price: getRandomInteger(10, 100),
         type: getRandomElement(types),
         rooms: getRandomElement(rooms),
@@ -70,8 +70,8 @@ const createOffer = () => {
         photos: getArrRandomLength(photos),
       },
       location: {
-        x: getRandomFloatingPoint(35.65000, 35.70000, 5),
-        y: getRandomFloatingPoint(139.70000, 139.80000, 5),
+        x,
+        y,
       },
 
     }
@@ -85,5 +85,5 @@ const createOffer = () => {
 
 }
 
-const offers = createOffer();
+const offers = createOffers();
 console.log(offers);
